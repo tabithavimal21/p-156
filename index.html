@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+
+    <script src="./components/rotation.js"></script>
+    <script src="./components/game.js"></script>
+    <script src="./components/coins.js"></script>
+    <script src="./components/collide.js"></script>
+
+  </head>
+
+  <body>
+    <a-scene background="color:#026F90">
+
+      <a-entity id="look" look-controls camera position="0 2 20"></a-entity>
+          
+    <a-assets timeout="10000">
+        <a-asset-item
+            id="oceanMap"
+            src="./assets/underwater_terrain/scene.gltf"
+        ></a-asset-item>
+
+       
+    <a-asset-item
+        id="diver"
+        src="./assets/models/diver_guy/scene.gltf"
+    ></a-asset-item> 
+
+    <a-asset-item
+      id="fish"
+      src="./assets/models/shiny_fish/scene.gltf"
+    ></a-asset-item>
+
+    <a-asset-item
+      id="coins"
+      src="./assets/models/coins/scene.gltf"
+    ></a-asset-item>
+    </a-assets>
+
+    <a-entity
+        id="ocean"
+        gltf-model="#oceanMap"
+        position="0 0 0"
+        scale="0.3 0.3 0.3"
+        animation="property:position; to:0 0 1000; easing:linear; loop:true; dur:150000"
+    ></a-entity>
+
+    <a-entity
+        id="diver_model"
+        gltf-model="#diver"
+        position="5 0 -15"
+        scale="0.01 0.01 0.01"
+        body="type:dynamic"
+        rotation="0 90 -20"
+        diver-rotation-reader
+
+    ></a-entity>
+
+<a-entity
+position="-5 0.1 0"
+text="font:exo2bold; align:center; width:10; color:black; value:TARGETS\nREMAINING"
+></a-entity>
+
+<a-entity
+        id="count"
+        position="-8 0.1 0"
+        text="font:exo2bold; align:center; width:30; color:black; value:20"
+      ></a-entity>
+      </a-entity>
+
+      <a-entity
+      position="30 19.3 0"
+      >
+      <a-entity
+      
+        position=""
+        text="font:exo2bold; align:center; width:30; color:black; value:SCORE"
+      ></a-entity>
+
+      <a-entity
+      id="score"
+        position="20 5 15"
+        text="font:exo2bold; align:center; width:30; color:black; value:0"
+
+      ></a-entity>
+    </a-entity>
+
+      </a-entity>
+
+      <a-entity
+      id="gameOver"
+      position="0 7 0"
+      text="font:exo2bold; align:center; width:30; color:black; value:GAME\nOVER"
+      visible="false"
+      ></a-entity>
+
+</a-scene>
+
+      </body>
+      </html>
